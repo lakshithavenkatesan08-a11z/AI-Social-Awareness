@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Social Impact | Awareness Campaign</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #064e3b, #059669, #34d399);
+            color: white;
+            padding: 25px 7%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .badge {
+            background: #ffffff25;
+            border: 1px solid #ffffff60;
+            border-radius: 30px;
+            padding: 7px 15px;
+            font-size: 12px;
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+            padding: 65px 0 55px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: #ffffff25;
+            border-radius: 25px;
+            padding: 7px 15px;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 53px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #ecfdf5;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: -20px auto 0;
+            padding: 0 20px 50px;
+        }
+
+        .generator {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 45px #0f172a12;
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-heading {
+            font-size: 23px;
+            margin-bottom: 8px;
+            color: #065f46;
+        }
+
+        .muted {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font: inherit;
+            background: #fff;
+            color: #1e293b;
+        }
+
+        select:focus {
+            outline: 2px solid #10b981;
+            border-color: #10b981;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 18px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #047857, #10b981);
+            color: white;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px #05966935;
+        }
+
+        .results-title {
+            margin: 35px 0 18px;
+            font-size: 25px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 23px;
+            box-shadow: 0 6px 20px #0f172a08;
+            overflow-wrap: anywhere;
+        }
+
+        .card h3 {
+            font-size: 17px;
+            margin-bottom: 12px;
+            color: #065f46;
+        }
+
+        .card p, .card li {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .card ul {
+            padding-left: 20px;
+        }
+
+        .caption-card {
+            background: #ecfdf5;
+            border-color: #a7f3d0;
+        }
+
+        .copy-btn {
+            margin-top: 15px;
+            padding: 9px 14px;
+            border: 0;
+            border-radius: 8px;
+            background: #047857;
+            color: white;
+            font: inherit;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .empty-state {
+            margin-top: 25px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px dashed #a7f3d0;
+        }
+
+        .empty-state .icon {
+            font-size: 38px;
+        }
+
+        footer {
+            background: #064e3b;
+            color: #d1fae5;
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                padding: 20px;
+            }
+
+            .hero {
+                padding: 45px 0;
+            }
+
+            .generator {
+                padding: 22px;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+        }
+        /* Page loading animation */
+body {
+    animation: pageLoad 1s ease-out;
+}
+
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animated campaign generator */
+.generator {
+    animation: slideUp 0.9s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Campaign cards animation */
+.results-grid .card {
+    animation: cardAppear 0.6s ease-out both;
+}
+
+.results-grid .card:nth-child(1) { animation-delay: 0.1s; }
+.results-grid .card:nth-child(2) { animation-delay: 0.2s; }
+.results-grid .card:nth-child(3) { animation-delay: 0.3s; }
+.results-grid .card:nth-child(4) { animation-delay: 0.4s; }
+.results-grid .card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Hero heading animation */
+.hero h1 {
+    animation: headingReveal 1s ease-out;
+}
+
+@keyframes headingReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">🌍 Social Impact</div>
+        <div class="badge">STUDENT PROJECT · 2026</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-label">💚 Small Actions. Big Changes.</div>
+
+        <h1>Make Awareness<br>Make a Difference.</h1>
+
+        <p>
+            Create meaningful social awareness campaigns that inspire
+            people to take action and build a better world.
+        </p>
+    </section>
+</header>
+
+<main>
+    <section class="generator">
+        <h2 class="section-heading">✨ Campaign Generator</h2>
+
+        <p class="muted">
+            Choose a social issue to explore its awareness message,
+            slogan, and campaign ideas.
+        </p>
+
+        <form method="POST">
+            <label for="topic">Choose your campaign topic</label>
+
+            <select name="topic" id="topic" required>
+                <option value="">Select a topic...</option>
+
+                {% for topic in topics %}
+                <option value="{{ topic }}"
+                    {% if selected_topic == topic %}selected{% endif %}>
+                    {{ topic }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <button class="generate-btn" type="submit">
+                Generate Campaign&nbsp; →
+            </button>
+        </form>
+    </section>
+
+    {% if campaign %}
+
+    <h2 class="results-title">🎉 Your Campaign Results</h2>
+
+    <section class="results-grid">
+
+        <article class="card">
+            <h3>📢 Awareness Message</h3>
+            <p>{{ campaign.message }}</p>
+        </article>
+
+        <article class="card">
+            <h3>🎯 Campaign Slogan</h3>
+            <p>{{ campaign.slogan }}</p>
+        </article>
+
+        <article class="card caption-card full-width">
+            <h3>📱 Social Media Caption</h3>
+            <p id="caption">{{ campaign.caption }}</p>
+
+            <button class="copy-btn" type="button" onclick="copyCaption()">
+                📋 Copy Caption
+            </button>
+        </article>
+
+        <article class="card">
+            <h3>💚 Why Social Awareness Matters</h3>
+            <p>{{ campaign.why }}</p>
+        </article>
+
+        <article class="card">
+            <h3>🌱 Simple Ways to Make a Difference</h3>
+            <ul>
+                {% for tip in campaign.tips %}
+                <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
+        </article>
+
+    </section>
+
+    {% else %}
+
+    <section class="empty-state">
+        <div class="icon">🌱</div>
+        <h3>Your campaign starts here!</h3>
+        <p class="muted">
+            Select a topic above and generate your first campaign.
+        </p>
+    </section>
+
+    {% endif %}
+</main>
+
+<footer>
+    <p>🌍 AI Social Awareness Campaign</p>
+    <p>Educate · Inspire · Take Action</p>
+</footer>
+
+<script>
+    function copyCaption() {
+        const caption = document.getElementById("caption").innerText;
+
+        navigator.clipboard.writeText(caption)
+            .then(() => alert("Caption copied successfully!"))
+            .catch(() => alert("Please select and copy the caption manually."));
+    }
+</script>
+
+</body>
+</html>
